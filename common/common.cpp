@@ -1,23 +1,19 @@
 //
-// Created by dilu on 23-11-20.
+// Created by dilu on 23-11-22.
 //
 
-#include <iostream>
-#include <random>
-#include <fstream>
-#include <iomanip>
-#include <climits>
+#include "common.h"
 
-std::random_device rd;
+std::random_device rd{};
 std::mt19937 gen(rd());
+
+int fileNum = 0;
+int width = 20;
 
 long long randomNum(long long a, long long b) {
     std::uniform_int_distribution<long long> dis(a, b);
     return dis(gen);
 }
-
-int fileNum = 0;
-int width = 20;
 
 void generateOneFile(long long count) {
     std::ofstream file("data/data" + std::to_string(fileNum++) + ".txt");
@@ -32,16 +28,4 @@ void generateOneFile(long long count) {
     } else {
         std::cout << "Unable to open file for writing." << std::endl;
     }
-}
-
-int main() {
-    long long all = 1 << 20, sum = all;
-    long long minCount = 1 << 6, maxCount = std::max(all >> 6, minCount);
-
-    while (sum >= minCount * (width + 1)) {
-        long long count = randomNum(minCount, maxCount);
-        generateOneFile(count);
-        sum -= count * (width + 1);
-    }
-    return 0;
 }
