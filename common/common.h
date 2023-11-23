@@ -14,6 +14,8 @@
 #include <fstream>
 #include <iomanip>
 #include <climits>
+#include <dirent.h>
+#include <string>
 
 extern std::random_device rd;
 extern std::mt19937 gen;
@@ -24,5 +26,11 @@ extern int width;
 long long randomNum(long long a, long long b);
 
 void generateOneFile(long long count);
+
+bool endsWith(const std::string &str, const std::string &suffix);
+
+int getFilesNumAndName(const std::string &folderPath, std::vector<std::string> &filesName);
+
+int getFileLength(const std::string &filePath);
 
 #endif //SORTBYTHREADS_COMMON_H
