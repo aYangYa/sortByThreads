@@ -143,6 +143,11 @@ bool getBlockSort(int id, long long offset, long long count) {
 }
 
 void sortBlocks() {
+    std::string folderPath = "allSortedDataByThreads";
+    mkdir(folderPath.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+    folderPath += "/level0";
+    mkdir(folderPath.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+
     getFilesNumAndName("data", filesNameAndLength);
     ThreadPool threadPool(4);
 
