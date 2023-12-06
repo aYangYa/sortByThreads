@@ -35,7 +35,7 @@ void generateOneFile(long long count) {
 }
 
 int main() {
-    long long all = 1 << 20, sum = all;
+    long long all = 1 << 30, sum = all;
     long long minCount = 1 << 6, maxCount = std::max(all >> 6, minCount);
 
     while (sum >= minCount * (width + 1)) {
